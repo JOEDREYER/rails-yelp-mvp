@@ -1,0 +1,18 @@
+<h1>Restaurants</h1>
+
+<h2><%= @restaurant.name %>: <%= '⭐️' * @restaurant.category.to_i %></h2>
+<h4><%= @restaurant.address %></h4>
+
+
+<button><%= link_to 'Delete', restaurant_path(@restaurant), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %></button>
+
+<button><%= link_to "Home", restaurants_path %></div></button>
+<button><%= link_to "New Review", new_restaurant_review_path(@restaurant) %></div></button>
+
+<p>These are the reviews for this restaurant</p>
+<ul>
+  <% @restaurant.reviews.each do |review| %>
+    <li><%= review.content %> - <%= review.rating %></li>
+  <% end %>
+</ul>
+
